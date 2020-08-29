@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
+// import {  FaReact } from 'react-icons/fa';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    withRouter,
+  } from "react-router-dom";
+import Search from './Components/SearchComponent/Search';
+import PostForm from './Components/PostComponent/PostForm';
+import NewForm from './Components/NewForm/NewForm';
+import PublishComponent from './Components/PublishedComponent/PublishComponent';
+import Displaypost from './Components/DisplayPost/DisplayPost';
+  
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  }
+    }
+    render() { 
+        return ( 
+            <Fragment>
+             <Router>
+                 <div id="search">
+                     <Search />
+                 </div>
+                <div id="bodyPart" >
+                    <NewForm  />
+                    <PublishComponent />
+                
+               </div>
+                
+                <Route path="/postform" exact component={PostForm}/>
+                <Route path="/Displaypost" exact component={Displaypost}/>
+             </Router>
+            </Fragment>
+         );
+    }
 }
-
-export default App;
+ 
+export default App ;
